@@ -1,0 +1,138 @@
+.odontograma {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e1e6e9;
+}
+
+.odontograma-fila {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+.cuadrante {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+}
+
+.diente-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.diente-numero {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.diente {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+/* Estructura usando bordes para las 4 caras periféricas */
+.cara {
+    position: absolute;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.cara:hover {
+    opacity: 0.7;
+}
+
+/* Face size controls */
+.cara.superior,
+.cara.inferior,
+.cara.izquierda,
+.cara.derecha {
+    width: 0;
+    height: 0;
+}
+
+.cara.superior {
+    top: 0;
+    left: 0;
+    border-width: 10px 10px 0 10px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+    width: 40px;
+}
+
+.cara.inferior {
+    bottom: 0;
+    left: 0;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+    width: 40px;
+}
+
+.cara.izquierda {
+    top: 0;
+    left: 0;
+    border-width: 10px 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #ffffff;
+    height: 40px;
+}
+
+.cara.derecha {
+    top: 0;
+    right: 0;
+    border-width: 10px 10px 10px 0;
+    border-style: solid;
+    border-color: transparent #ffffff transparent transparent;
+    height: 40px;
+}
+
+.cara.central {
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+}
+
+/* Líneas del diente (bordes) */
+.diente-lineas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #1e293b;
+    pointer-events: none; /* Dejar pasar los clicks */
+    z-index: 1;
+}
+
+.diente-lineas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, transparent 48%, #1e293b 49%, #1e293b 51%, transparent 52%),
+                linear-gradient(to top right, transparent 48%, #1e293b 49%, #1e293b 51%, transparent 52%);
+    pointer-events: none;
+}
+
+.cara.central {
+    z-index: 2; /* Sobre las lineas de fondo */
+    border: 1px solid #1e293b;
+}
+
+/* Para colorear dinámicamente con JS se puede añadir style="border-top-color: RED" para superior, o background-color para central */
